@@ -23,6 +23,9 @@ public class RelocationPeopleInfo {
     @Column(name = "hl", nullable = false, length = 20)
     String owner;
 
+    @Column(name = "idcard", nullable = false, length = 20)
+    String idCard;
+
     @Column(name = "address", nullable = false, length = 100)
     String address;
 
@@ -62,7 +65,8 @@ public class RelocationPeopleInfo {
     @JsonIgnoreProperties({"compensation"})
     RelocationPeopleDwellingFaciltyCompensation compensation;
 
-    public RelocationPeopleInfo(String owner, String address, Date registerDate, String remark, String signature, String principal, String responsiblePeople, Date fillDate) {
+    public RelocationPeopleInfo(String idCard, String owner, String address, Date registerDate, String remark, String signature, String principal, String responsiblePeople, Date fillDate) {
+        this.idCard = idCard;
         this.owner = owner;
         this.address = address;
         this.registerDate = registerDate;

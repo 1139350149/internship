@@ -17,16 +17,16 @@ public class Employee {
     private int id;
 
     @Column(name = "enum", nullable = false)
-    private int eNum;
+    private int num;
 
     @Column(name = "name", nullable = false, length = 50)
-    private String eName;
+    private String name;
 
     @Column(name = "pwd", nullable = false, length = 20)
-    private String ePwd;
+    private String pwd;
 
     @Column(name = "email", nullable = false, length = 20)
-    private String eEmail;
+    private String email;
 
     @JsonIgnoreProperties({"department"})
     @ManyToOne(fetch = FetchType.LAZY)
@@ -36,22 +36,30 @@ public class Employee {
     private Department department;
 
     @Column(name = "gender", nullable = false)
-    private boolean eGender;        // false = female, true = male
+    private boolean gender;        // false = female, true = male
 
     @Column(name = "phone", length = 50)
-    private String ePhone;
+    private String phone;
 
     @Column(name = "remark")
     private String remark;
 
-    public Employee(int eNum, String eName, String ePwd, String eEmail, Department department, boolean eGender, String ePhone, String remark) {
-        this.eNum = eNum;
-        this.eName = eName;
-        this.ePwd = ePwd;
-        this.eEmail = eEmail;
+    public Employee(int num, String name, String pwd, String email, Department department, boolean gender, String phone, String remark) {
+        this.num = num;
+        this.name = name;
+        this.pwd = pwd;
+        this.email = email;
         this.department = department;
-        this.eGender = eGender;
-        this.ePhone = ePhone;
+        this.gender = gender;
+        this.phone = phone;
         this.remark = remark;
+    }
+
+    public boolean getGender(){
+        return this.gender;
+    }
+
+    public void setGender(boolean g){
+        this.gender = g;
     }
 }
