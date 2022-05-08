@@ -17,7 +17,7 @@ public class BuildingTransferSituation {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rpdfcid", referencedColumnName = "id")
-    RelocationPeopleDwellingFaciltyCompensation compensation;
+    RelocationPeopleDwellingFacilityCompensation compensation;
 
     @Column(name = "name", nullable = false, length = 20)
     String name;

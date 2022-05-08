@@ -20,18 +20,14 @@ public class EnterpriseTurnoverMeasurement {
     private int id;
 
     //测量日期
-    @Column(name = "date", nullable = false)
-    private Date Date;
-
-    //测量表序号
-    @Column(name = "mno", nullable = false, length = 10)
-    private String measureNo;
+    @Column(name = "mdate", nullable = false)
+    private Date measureDate;
 
     //企业名称
     @Column(name = "ename", nullable = false, length = 50)
     private String enterpriseName;
 
-    //地址
+    //企业地址
     @Column(name = "address", nullable = false, length = 100)
     private String address;
 
@@ -47,123 +43,76 @@ public class EnterpriseTurnoverMeasurement {
     @Column(name = "surveyor", nullable = false, length = 50)
     private String surveyor;
 
-    //棚厦
-    @Column(name = "shed")
-    private int shed;
-
-    //水井
+    //征占水井个数
     @Column(name = "well")
-    private int well;
+    private int wellCount;
 
-    //院门
-    @Column(name = "door")
-    private int door;
+    //征占围墙面积
+    @Column(name = "wall")
+    private double wallArea;
 
-    //电话
-    @Column(name = "phone")
-    private int phone;
+    //征占水泥地面积
+    @Column(name = "cement")
+    private double cementArea;
 
-    //有线电视
-    @Column(name = "ctv")
-    private int cableTV;
-
-    //其他
-    @Column(name = "others", length = 100)
-    private String others;
+    //征占地窖容积
+    @Column(name = "cellar")
+    private double cellarVolume;
 
     //动迁人签字
     @Column(name = "rsign", nullable = false, length = 10)
     private String resettleSign;
 
-    //被动迁人签字
-    @Column(name = "bssign", nullable = false, length = 10)
-    private String beSettledSign;
+    //建设办公楼总面积
+    @Column(name = "oarea")
+    private double totalOfficeArea;
 
-    //办公楼外键
-    @OneToOne(mappedBy = "enterpriseTurnoverMeasurement")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @JsonIgnoreProperties({"officeBuilding"})
-    OfficeBuilding officeBuilding;
+    //建设厂房总面积
+    @Column(name = "farea")
+    private double totalFactoryArea;
 
-    //厂房表外键
-    @OneToOne(mappedBy = "enterpriseTurnoverMeasurement")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @JsonIgnoreProperties({"factory"})
-    Factory factory;
+    //建设水泥路总面积
+    @Column(name = "crarea")
+    private double totalCementRoadArea;
 
-    //小房表外键
-    @OneToOne(mappedBy = "enterpriseTurnoverMeasurement")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @JsonIgnoreProperties({"enterpriseSmallBuilding"})
-    EnterpriseSmallBuilding enterpriseSmallBuilding;
+    //建设围墙总面积
+    @Column(name = "fearea")
+    private double totalFenceArea;
 
-    //水泥地表外键
-    @OneToOne(mappedBy = "enterpriseTurnoverMeasurement")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @JsonIgnoreProperties({"cementGround"})
-    CementGround cementGround;
 
-    //砖地表外键
-    @OneToOne(mappedBy = "enterpriseTurnoverMeasurement")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @JsonIgnoreProperties({"brickGround"})
-    BrickGround brickGround;
-
-    //水泥路表外键
-    @OneToOne(mappedBy = "enterpriseTurnoverMeasurement")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @JsonIgnoreProperties({"cementRoad"})
-    CementRoad cementRoad;
-
-    //沥青路表外键
-    @OneToOne(mappedBy = "enterpriseTurnoverMeasurement")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @JsonIgnoreProperties({"asphaltRoad"})
-    AsphaltRoad asphaltRoad;
-
-    //护坡墙表外键
-    @OneToOne(mappedBy = "enterpriseTurnoverMeasurement")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @JsonIgnoreProperties({"slopeWall"})
-    SlopeWall slopeWall;
-
-    //挡土墙表外键
-    @OneToOne(mappedBy = "enterpriseTurnoverMeasurement")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @JsonIgnoreProperties({"retainingWall"})
-    RetainingWall retainingWall;
-
-    //围墙表外键
-    @OneToOne(mappedBy = "enterpriseTurnoverMeasurement")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @JsonIgnoreProperties({"fences"})
-    Fences fences;
-
-    public EnterpriseTurnoverMeasurement(Date date, String measureNo, String enterpriseName, String address, String occupiedProject, String recorder, String surveyor, int shed, int well, int door, int phone, int cableTV, String others, String resettleSign, String beSettledSign) {
-        Date = date;
-        this.measureNo = measureNo;
+    public EnterpriseTurnoverMeasurement(Date measureDate, String enterpriseName, String address, String occupiedProject, String recorder, String surveyor, int wellCount, double wallArea, double cementArea, double cellarVolume, String resettleSign, double totalOfficeArea, double totalFactoryArea, double totalCementRoadArea, double totalFenceArea) {
+        this.measureDate = measureDate;
         this.enterpriseName = enterpriseName;
         this.address = address;
         this.occupiedProject = occupiedProject;
         this.recorder = recorder;
         this.surveyor = surveyor;
-        this.shed = shed;
-        this.well = well;
-        this.door = door;
-        this.phone = phone;
-        this.cableTV = cableTV;
-        this.others = others;
+        this.wellCount = wellCount;
+        this.wallArea = wallArea;
+        this.cementArea = cementArea;
+        this.cellarVolume = cellarVolume;
         this.resettleSign = resettleSign;
-        this.beSettledSign = beSettledSign;
+        this.totalOfficeArea = totalOfficeArea;
+        this.totalFactoryArea = totalFactoryArea;
+        this.totalCementRoadArea = totalCementRoadArea;
+        this.totalFenceArea = totalFenceArea;
+    }
+
+    public void update(Date measureDate, String enterpriseName, String address, String occupiedProject, String recorder, String surveyor, int wellCount, double wallArea, double cementArea, double cellarVolume, String resettleSign, double totalOfficeArea, double totalFactoryArea, double totalCementRoadArea, double totalFenceArea) {
+        this.measureDate = measureDate;
+        this.enterpriseName = enterpriseName;
+        this.address = address;
+        this.occupiedProject = occupiedProject;
+        this.recorder = recorder;
+        this.surveyor = surveyor;
+        this.wellCount = wellCount;
+        this.wallArea = wallArea;
+        this.cementArea = cementArea;
+        this.cellarVolume = cellarVolume;
+        this.resettleSign = resettleSign;
+        this.totalOfficeArea = totalOfficeArea;
+        this.totalFactoryArea = totalFactoryArea;
+        this.totalCementRoadArea = totalCementRoadArea;
+        this.totalFenceArea = totalFenceArea;
     }
 }

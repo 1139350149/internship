@@ -22,7 +22,7 @@ public class Tree1_7 {
     @JoinColumn(name = "rpdfcid")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private RelocationPeopleDwellingFaciltyCompensation compensation;
+    private RelocationPeopleDwellingFacilityCompensation compensation;
 
     @Column(name = "name", nullable = false, length = 20)
     String name;

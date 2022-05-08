@@ -38,7 +38,7 @@ public class TokenUtil {
         return signData;
     }
 
-    public static boolean verfiy(String token, EmployeeRepository repository) {
+    public static boolean verify(String token, EmployeeRepository repository) {
 
         try {
             Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);

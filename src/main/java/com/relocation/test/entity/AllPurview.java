@@ -15,7 +15,6 @@ public class AllPurview {
     @Column(name = "id")
     private int id;
 
-    //
     @Column(name = "depnum", nullable = false)
     private int purviewNumber;
 

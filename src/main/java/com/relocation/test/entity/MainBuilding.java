@@ -21,7 +21,7 @@ public class MainBuilding {
     @JoinColumn(name = "rpdfcid")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private RelocationPeopleDwellingFaciltyCompensation compensation;
+    private RelocationPeopleDwellingFacilityCompensation compensation;
 
     @Column(name = "rcount", nullable = false)
     int roomCount;

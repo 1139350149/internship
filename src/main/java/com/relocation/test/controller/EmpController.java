@@ -6,20 +6,16 @@ import com.relocation.test.repository.EmployeeRepository;
 import com.relocation.test.util.JsonUtil;
 import com.relocation.test.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class EmpController {
     @Autowired
     EmployeeRepository employeeRepository;
 
-    @ResponseBody
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     JSONObject login(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) {
+        System.out.println("login");
         JSONObject res = JsonUtil.getJson();
         JSONObject meta = null;
         JSONObject data = null;

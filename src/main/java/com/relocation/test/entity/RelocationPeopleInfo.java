@@ -20,7 +20,7 @@ public class RelocationPeopleInfo {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "hl", nullable = false, length = 20)
+    @Column(name = "owner", nullable = false, length = 20)
     String owner;
 
     @Column(name = "idcard", nullable = false, length = 20)
@@ -47,23 +47,23 @@ public class RelocationPeopleInfo {
     @Column(name = "filldate")
     Date fillDate;
 
-    @OneToMany(mappedBy = "relocationPeopleInfo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "relocationPeopleInfo", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @JsonIgnoreProperties({"relocationPeopleDetailInfos"})
     List<RelocationPeopleDetailInfo> relocationPeopleDetailInfos;
 
-    @OneToOne(mappedBy = "relocationPeopleInfo")
+    @OneToOne(mappedBy = "relocationPeopleInfo", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @JsonIgnoreProperties({"settlement"})
     DistributionOfBuildingExpensesSettlement settlement;
 
-    @OneToOne(mappedBy = "relocationPeopleInfo")
+    @OneToOne(mappedBy = "relocationPeopleInfo", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @JsonIgnoreProperties({"compensation"})
-    RelocationPeopleDwellingFaciltyCompensation compensation;
+    RelocationPeopleDwellingFacilityCompensation compensation;
 
     public RelocationPeopleInfo(String idCard, String owner, String address, Date registerDate, String remark, String signature, String principal, String responsiblePeople, Date fillDate) {
         this.idCard = idCard;
